@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Health Analytics Dashboard</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<style>
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+
+}
+
+
+body{
+
+background:#f5f8ff;
+padding:40px;
+
+}
+
+
+
+h1{
+
+text-align:center;
+color:#0f4c81;
+margin-bottom:40px;
+
+}
+
+
+
+.container{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:30px;
+
+}
+
+
+
+.card{
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+
+
+.card h2{
+
+color:#0f4c81;
+
+margin-bottom:20px;
+
+}
+
+
+
+.summary{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:15px;
+
+}
+
+
+
+.box{
+
+background:#e7fff5;
+
+padding:20px;
+
+border-radius:15px;
+
+text-align:center;
+
+}
+
+
+
+.box h3{
+
+color:#1dbf73;
+
+font-size:25px;
+
+}
+
+
+
+.box p{
+
+color:#555;
+
+}
+
+
+
+.full{
+
+grid-column:1/3;
+
+}
+
+
+
+.recommend{
+
+line-height:35px;
+
+color:#555;
+
+}
+
+
+
+button{
+
+margin-top:30px;
+
+padding:15px 30px;
+
+border:none;
+
+background:#0f4c81;
+
+color:white;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+
+
+@media(max-width:900px){
+
+.container{
+
+grid-template-columns:1fr;
+
+}
+
+
+.full{
+
+grid-column:auto;
+
+}
+
+
+.summary{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<h1>
+<i class="fa-solid fa-chart-line"></i>
+Health Analytics Dashboard
+</h1>
+
+
+
+<div class="container">
+
+
+
+<!-- USER SUMMARY -->
+
+<div class="card full">
+
+
+<h2>
+Health Summary
+</h2>
+
+
+<div class="summary">
+
+
+<div class="box">
+
+<h3>
+{{data.BMI}}
+</h3>
+
+<p>BMI</p>
+
+</div>
+
+
+
+<div class="box">
+
+<h3>
+{{data.risk}}%
+</h3>
+
+<p>Risk Confidence</p>
+
+</div>
+
+
+
+<div class="box">
+
+<h3>
+{{data.result}}
+</h3>
+
+<p>Prediction</p>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- BMI BAR CHART -->
+
+
+<div class="card">
+
+
+<h2>
+BMI Analysis
+</h2>
+
+
+<canvas id="bmiChart"></canvas>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- LIFESTYLE PIE -->
+
+
+<div class="card">
+
+
+<h2>
+Lifestyle Score
+</h2>
+
+
+<canvas id="lifeChart"></canvas>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- RADAR -->
+
+
+<div class="card">
+
+
+<h2>
+Health Parameters
+</h2>
+
+
+<canvas id="radarChart"></canvas>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- RISK LINE -->
+
+
+<div class="card">
+
+
+<h2>
+Risk Level
+</h2>
+
+
+<canvas id="riskChart"></canvas>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- RECOMMENDATION -->
+
+
+<div class="card full">
+
+
+<h2>
+AI Health Recommendations
+</h2>
+
+
+<div class="recommend">
+
+
+{% if data.BMI > 25 %}
+
+⚠ Your BMI is above the healthy range.<br>
+
+✔ Maintain balanced diet and regular exercise.<br>
+
+{% else %}
+
+✔ Your BMI is in a healthy range.<br>
+
+{% endif %}
+
+
+
+{% if data.Smoker == 1 %}
+
+⚠ Smoking increases lifestyle disease risk.<br>
+
+✔ Consider reducing smoking habits.<br>
+
+{% endif %}
+
+
+
+{% if data.PhysActivity == 0 %}
+
+⚠ Low physical activity detected.<br>
+
+✔ Add daily walking or exercise.<br>
+
+{% else %}
+
+✔ Good physical activity level.<br>
+
+{% endif %}
+
+
+
+✔ Regular health checkups are recommended.
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+// BMI CHART
+
+new Chart(
+document.getElementById("bmiChart"),
+{
+
+type:"bar",
+
+data:{
+
+labels:["BMI"],
+
+datasets:[{
+
+label:"Your BMI",
+
+data:[{{data.BMI}}]
+
+}]
+
+}
+
+});
+
+
+
+
+
+// Lifestyle PIE
+
+
+let healthy =
+{{data.PhysActivity}}
++
+{{data.Fruits}}
++
+{{data.Veggies}};
+
+
+
+new Chart(
+
+document.getElementById("lifeChart"),
+
+{
+
+type:"pie",
+
+data:{
+
+labels:[
+
+"Healthy Habits",
+
+"Risk Factors"
+
+],
+
+datasets:[{
+
+data:[
+
+healthy,
+
+3-healthy
+
+]
+
+}]
+
+}
+
+}
+
+);
+
+
+
+
+
+
+
+// RADAR CHART
+
+
+new Chart(
+
+document.getElementById("radarChart"),
+
+{
+
+type:"radar",
+
+data:{
+
+labels:[
+
+"BMI",
+
+"Activity",
+
+"Fruits",
+
+"Vegetables",
+
+"General Health",
+
+"Walking"
+
+],
+
+
+datasets:[{
+
+label:"Health Profile",
+
+data:[
+
+{{data.BMI}},
+
+{{data.PhysActivity}},
+
+{{data.Fruits}},
+
+{{data.Veggies}},
+
+{{data.GenHlth}},
+
+{{data.DiffWalk}}
+
+]
+
+}]
+
+}
+
+}
+
+);
+
+
+
+
+
+
+
+// RISK LINE
+
+
+new Chart(
+
+document.getElementById("riskChart"),
+
+{
+
+type:"line",
+
+data:{
+
+labels:[
+
+"Assessment"
+
+],
+
+datasets:[{
+
+label:"Risk %",
+
+data:[{{data.risk}}]
+
+}]
+
+}
+
+}
+
+);
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

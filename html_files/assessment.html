@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Health Assessment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+
+body{
+
+    background:#f5f8ff;
+
+}
+
+
+.container{
+
+    width:70%;
+    margin:50px auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+
+h1{
+
+    text-align:center;
+    color:#0f4c81;
+    margin-bottom:10px;
+
+}
+
+
+.subtitle{
+
+    text-align:center;
+    color:#666;
+    margin-bottom:35px;
+
+}
+
+
+
+.question{
+
+    margin-bottom:25px;
+
+}
+
+
+
+.question label{
+
+    display:block;
+    font-weight:600;
+    color:#333;
+    margin-bottom:10px;
+
+}
+
+
+
+input,select{
+
+    width:100%;
+    padding:13px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-size:15px;
+
+}
+
+
+
+button{
+
+    width:100%;
+    padding:16px;
+
+    background:#1dbf73;
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+}
+
+
+button:hover{
+
+    background:#159b5d;
+
+}
+
+
+.icon{
+
+    color:#1dbf73;
+    margin-right:8px;
+
+}
+
+
+.row{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+
+}
+
+
+@media(max-width:800px){
+
+.container{
+
+width:90%;
+
+}
+
+
+.row{
+
+grid-template-columns:1fr;
+
+}
+
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+<i class="fa-solid fa-heart-pulse"></i>
+Health Assessment
+</h1>
+
+
+<p class="subtitle">
+Answer a few lifestyle questions to analyze your diabetes risk
+</p>
+
+
+
+<form action="/predict" method="POST">
+
+
+
+<div class="row">
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-weight-scale icon"></i>
+BMI
+</label>
+
+<input type="number" 
+name="BMI"
+placeholder="Enter your BMI"
+required>
+
+</div>
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-calendar icon"></i>
+Age Group
+</label>
+
+
+<select name="Age" required>
+
+<option value="">Select Age</option>
+
+<option value="1">18-24</option>
+
+<option value="2">25-34</option>
+
+<option value="3">35-44</option>
+
+<option value="4">45-54</option>
+
+<option value="5">55-64</option>
+
+<option value="6">65+</option>
+
+</select>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-person-running icon"></i>
+Do you do regular physical activity?
+</label>
+
+
+<select name="PhysActivity">
+
+<option value="1">Yes</option>
+
+<option value="0">No</option>
+
+</select>
+
+
+</div>
+
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-apple-whole icon"></i>
+Do you consume fruits regularly?
+</label>
+
+
+<select name="Fruits">
+
+<option value="1">Yes</option>
+
+<option value="0">No</option>
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-carrot icon"></i>
+Do you consume vegetables regularly?
+</label>
+
+
+<select name="Veggies">
+
+<option value="1">Yes</option>
+
+<option value="0">No</option>
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-smoking icon"></i>
+Do you smoke?
+</label>
+
+
+<select name="Smoker">
+
+<option value="1">Yes</option>
+
+<option value="0">No</option>
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-heart icon"></i>
+Do you have high blood pressure?
+</label>
+
+
+<select name="HighBP">
+
+
+<option value="1">Yes</option>
+
+<option value="0">No</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-droplet icon"></i>
+Do you have high cholesterol?
+</label>
+
+
+<select name="HighChol">
+
+
+<option value="1">Yes</option>
+
+<option value="0">No</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-face-frown icon"></i>
+General Health Condition
+</label>
+
+
+<select name="GenHlth">
+
+
+<option value="1">Excellent</option>
+
+<option value="2">Very Good</option>
+
+<option value="3">Good</option>
+
+<option value="4">Fair</option>
+
+<option value="5">Poor</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-person-walking icon"></i>
+Difficulty in Walking?
+</label>
+
+
+<select name="DiffWalk">
+
+
+<option value="1">Yes</option>
+
+<option value="0">No</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-venus-mars icon"></i>
+Gender
+</label>
+
+
+<select name="Sex">
+
+
+<option value="0">Female</option>
+
+<option value="1">Male</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<button type="submit">
+
+<i class="fa-solid fa-chart-line"></i>
+Analyze My Health Risk
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+</body>
+
+</html>

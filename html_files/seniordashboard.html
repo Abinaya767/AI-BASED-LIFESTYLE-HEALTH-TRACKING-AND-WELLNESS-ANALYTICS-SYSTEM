@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Senior Health Dashboard</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<style>
+
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+
+}
+
+
+
+body{
+
+background:#eef5ff;
+padding:40px;
+
+}
+
+
+
+.container{
+
+width:92%;
+margin:auto;
+
+}
+
+
+
+/* HEADER */
+
+
+.header{
+
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+
+margin-bottom:30px;
+
+
+}
+
+
+
+.header h1{
+
+
+color:#0f4c81;
+
+font-size:35px;
+
+
+}
+
+
+
+.header p{
+
+
+color:#666;
+
+line-height:30px;
+
+margin-top:10px;
+
+
+}
+
+
+
+
+
+/* SCORE */
+
+
+.score-circle{
+
+
+height:170px;
+
+width:170px;
+
+
+border-radius:50%;
+
+
+background:linear-gradient(135deg,#795548,#1565c0);
+
+
+
+display:flex;
+
+flex-direction:column;
+
+
+align-items:center;
+
+justify-content:center;
+
+
+color:white;
+
+
+}
+
+
+
+.score-circle h2{
+
+
+font-size:45px;
+
+
+}
+
+
+
+.score-circle p{
+
+
+font-size:16px;
+
+
+}
+
+
+
+
+
+
+/* CARDS */
+
+
+.cards{
+
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+
+gap:20px;
+
+
+margin-bottom:35px;
+
+
+}
+
+
+
+
+.card{
+
+
+background:white;
+
+
+padding:25px;
+
+
+border-radius:18px;
+
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+
+}
+
+
+
+
+.card i{
+
+
+font-size:32px;
+
+
+color:#795548;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+
+.card h3{
+
+
+color:#0f4c81;
+
+
+margin-bottom:12px;
+
+
+}
+
+
+
+
+.card p{
+
+
+color:#555;
+
+
+line-height:30px;
+
+
+font-size:15px;
+
+
+}
+
+
+
+
+
+/* CHART */
+
+
+.section-title{
+
+
+font-size:30px;
+
+
+color:#0f4c81;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+.chart-grid{
+
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+
+gap:25px;
+
+
+}
+
+
+
+.chart-card{
+
+
+background:white;
+
+
+padding:30px;
+
+
+border-radius:20px;
+
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.chart-card h2{
+
+
+color:#0f4c81;
+
+
+margin-bottom:12px;
+
+
+}
+
+
+
+.chart-card p{
+
+
+color:#666;
+
+
+line-height:28px;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+
+canvas{
+
+
+height:320px!important;
+
+
+}
+
+
+
+
+@media(max-width:1000px){
+
+
+.cards{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+
+
+.chart-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.header{
+
+flex-direction:column;
+
+text-align:center;
+
+gap:25px;
+
+}
+
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="container">
+
+
+
+<!-- HEADER -->
+
+
+<div class="header">
+
+
+<div>
+
+
+<h1>
+
+<i class="fa-solid fa-person-cane"></i>
+
+Senior Health Dashboard
+
+</h1>
+
+
+
+<p>
+
+Welcome <b>{{data.name}}</b>
+
+<br>
+
+Your wellness analytics based on your health assessment.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="score-circle">
+
+
+<h2>
+
+{{data.score}}
+
+</h2>
+
+
+<p>
+
+Wellness Score
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PROFILE CARDS -->
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-user"></i>
+
+
+<h3>
+
+Personal Details
+
+</h3>
+
+
+<p>
+
+
+<b>Name:</b> {{data.name}}
+
+<br>
+
+
+<b>Email:</b> {{data.email}}
+
+
+<br>
+
+
+<b>Age:</b> {{data.age}}
+
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+
+<h3>
+
+Health Status
+
+</h3>
+
+
+<p>
+
+{{data.result}}
+
+<br>
+
+Current wellness evaluation.
+
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-person-walking"></i>
+
+
+<h3>
+
+Activity Level
+
+</h3>
+
+
+<p>
+
+
+Walking:
+
+{{data.walking}}
+
+
+<br>
+
+
+Exercise:
+
+{{data.exercise}}
+
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-notes-medical"></i>
+
+
+<h3>
+
+Health Monitoring
+
+</h3>
+
+
+<p>
+
+
+Blood Pressure:
+
+{{data.bp}}
+
+
+<br>
+
+
+Sugar:
+
+{{data.sugar}}
+
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+<h2 class="section-title">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Senior Health Analytics
+
+</h2>
+
+
+
+
+
+<div class="chart-grid">
+
+
+
+<div class="chart-card">
+
+
+<h2>
+
+Health Habit Score
+
+</h2>
+
+
+<p>
+
+Comparison of activity, hydration, sleep and health monitoring habits.
+
+</p>
+
+
+<canvas id="barChart"></canvas>
+
+
+</div>
+<!-- ==================================
+WELLNESS BALANCE RADAR CHART
+================================== -->
+
+
+
+
+
+
+
+
+<!-- ==================================
+WELLNESS DISTRIBUTION DOUGHNUT
+================================== -->
+
+
+<div class="chart-card">
+
+
+<h2>
+
+Overall Wellness Distribution
+
+</h2>
+
+
+<p>
+
+Displays your current wellness score and areas where improvement is possible.
+
+</p>
+
+
+<canvas id="doughnutChart"></canvas>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ==================================
+DAILY HEALTH FACTORS PIE
+================================== -->
+
+
+<div class="chart-card">
+
+
+<h2>
+
+Daily Health Factors
+
+</h2>
+
+
+<p>
+
+Shows the contribution of important health habits in your daily routine.
+
+</p>
+
+
+<canvas id="pieChart"></canvas>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==================================
+CHART.JS
+================================== -->
+
+
+<script>
+
+
+
+
+
+// ==================================
+// BAR CHART
+// ==================================
+
+
+new Chart(
+
+document.getElementById("barChart"),
+
+{
+
+
+type:"bar",
+
+
+data:{
+
+
+labels:[
+
+
+"Walking",
+
+"Hydration",
+
+"Sleep",
+
+"BP Awareness",
+
+"Sugar Awareness"
+
+
+],
+
+
+
+datasets:[{
+
+
+label:"Health Habit Score",
+
+
+data:[
+
+
+
+{% if data.walking=="Yes" %}
+
+100
+
+{% else %}
+
+40
+
+{% endif %},
+
+
+
+
+{% if data.water=="More than 2 Litres" %}
+
+100
+
+{% elif data.water=="1 - 2 Litres" %}
+
+70
+
+{% else %}
+
+40
+
+{% endif %},
+
+
+
+
+{% if data.sleep=="7-9 Hours" %}
+
+100
+
+{% elif data.sleep=="6-7 Hours" %}
+
+70
+
+{% else %}
+
+40
+
+{% endif %},
+
+
+
+
+
+{% if data.bp=="Normal" %}
+
+100
+
+{% else %}
+
+50
+
+{% endif %},
+
+
+
+
+{% if data.sugar=="Normal" %}
+
+100
+
+{% else %}
+
+50
+
+{% endif %}
+
+
+
+]
+
+
+}]
+
+
+},
+
+
+
+options:{
+
+
+responsive:true,
+
+
+scales:{
+
+
+y:{
+
+
+beginAtZero:true,
+
+max:100
+
+
+}
+
+
+}
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+// ==================================
+// RADAR CHART
+// ==================================
+
+
+
+new Chart(
+
+document.getElementById("radarChart"),
+
+{
+
+
+type:"radar",
+
+
+data:{
+
+
+labels:[
+
+
+"Activity",
+
+"Water",
+
+"Sleep",
+
+"BP Care",
+
+"Sugar Care"
+
+
+],
+
+
+
+datasets:[{
+
+
+label:"Senior Wellness",
+
+
+data:[
+
+
+{% if data.walking=="Yes" %}
+
+100
+
+{% else %}
+
+40
+
+{% endif %},
+
+
+
+
+{% if data.water=="More than 2 Litres" %}
+
+100
+
+{% else %}
+
+60
+
+{% endif %},
+
+
+
+
+{% if data.sleep=="7-9 Hours" %}
+
+100
+
+{% else %}
+
+50
+
+{% endif %},
+
+
+
+
+
+{% if data.bp=="Normal" %}
+
+100
+
+{% else %}
+
+50
+
+{% endif %},
+
+
+
+
+
+{% if data.sugar=="Normal" %}
+
+100
+
+{% else %}
+
+50
+
+{% endif %}
+
+
+
+]
+
+
+}]
+
+
+},
+
+
+
+options:{
+
+
+responsive:true,
+
+
+scales:{
+
+
+r:{
+
+
+beginAtZero:true,
+
+max:100
+
+
+}
+
+
+}
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// ==================================
+// DOUGHNUT CHART
+// ==================================
+
+
+
+new Chart(
+
+document.getElementById("doughnutChart"),
+
+{
+
+
+type:"doughnut",
+
+
+data:{
+
+
+labels:[
+
+
+"Healthy Lifestyle",
+
+"Improvement Area"
+
+
+],
+
+
+
+datasets:[{
+
+
+data:[
+
+
+
+{{data.score}},
+
+
+{{100-data.score}}
+
+
+
+]
+
+
+}]
+
+
+},
+
+
+
+options:{
+
+
+responsive:true
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+// ==================================
+// PIE CHART
+// ==================================
+
+
+
+new Chart(
+
+document.getElementById("pieChart"),
+
+{
+
+
+type:"pie",
+
+
+data:{
+
+
+labels:[
+
+
+"Activity",
+
+"Hydration",
+
+"Sleep",
+
+"Health Monitoring"
+
+
+],
+
+
+
+datasets:[{
+
+
+data:[
+
+
+25,
+
+25,
+
+25,
+
+25
+
+
+]
+
+
+}]
+
+
+},
+
+
+
+options:{
+
+
+responsive:true
+
+
+}
+
+
+});
+
+
+
+
+</script>
+<!-- =====================================
+PERSONALIZED RECOMMENDATIONS
+===================================== -->
+
+
+<div style="margin-top:40px;"></div>
+
+
+
+<h2 class="section-title">
+
+<i class="fa-solid fa-robot"></i>
+
+Personalized Wellness Recommendations
+
+</h2>
+
+
+
+
+
+<div class="chart-grid">
+
+
+
+<div class="chart-card">
+
+
+<h2>
+
+Lifestyle Suggestions
+
+</h2>
+
+
+<p>
+
+Based on your assessment, here are some wellness suggestions.
+
+</p>
+
+
+
+<ul style="padding-left:20px;color:#555;line-height:35px;">
+
+
+
+{% if data.walking=="Yes" %}
+
+<li>
+🚶 Continue your regular walking routine to maintain mobility.
+</li>
+
+{% else %}
+
+<li>
+🚶 Add gentle walking or light movements based on comfort.
+</li>
+
+{% endif %}
+
+
+
+
+
+
+{% if data.water=="Less than 1 Litre" %}
+
+<li>
+💧 Increase water intake throughout the day.
+</li>
+
+{% else %}
+
+<li>
+💧 Maintain your healthy hydration habit.
+</li>
+
+{% endif %}
+
+
+
+
+
+
+
+{% if data.sleep=="Less than 6 Hours" %}
+
+<li>
+😴 Improve your sleep routine for better rest.
+</li>
+
+{% else %}
+
+<li>
+😴 Continue maintaining good sleep habits.
+</li>
+
+{% endif %}
+
+
+
+
+
+
+{% if data.bp=="High" %}
+
+<li>
+❤️ Regularly monitor blood pressure and follow medical advice.
+</li>
+
+{% else %}
+
+<li>
+❤️ Continue your blood pressure awareness.
+</li>
+
+{% endif %}
+
+
+
+
+
+
+
+{% if data.sugar=="High" %}
+
+<li>
+🩺 Maintain balanced meals and sugar awareness.
+</li>
+
+{% else %}
+
+<li>
+🩺 Continue maintaining healthy monitoring habits.
+</li>
+
+{% endif %}
+
+
+
+
+</ul>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="chart-card">
+
+
+<h2>
+
+Healthy Aging Tips
+
+</h2>
+
+
+<p>
+
+Small daily habits help maintain an active and healthy lifestyle.
+
+</p>
+
+
+
+<ul style="padding-left:20px;color:#555;line-height:35px;">
+
+
+
+<li>
+🥗 Eat balanced and nutritious meals.
+</li>
+
+
+<li>
+🚶 Stay physically active according to comfort level.
+</li>
+
+
+<li>
+💧 Drink enough water regularly.
+</li>
+
+
+<li>
+😴 Maintain a consistent sleep schedule.
+</li>
+
+
+<li>
+👨‍👩‍👧 Stay socially connected with family and friends.
+</li>
+
+
+<li>
+🩺 Attend regular health checkups.
+</li>
+
+
+<li>
+😊 Continue hobbies and activities you enjoy.
+</li>
+
+
+
+</ul>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- =====================================
+WELLNESS SUMMARY
+===================================== -->
+
+
+<div class="chart-card" style="margin-top:30px;">
+
+
+<h2>
+
+<i class="fa-solid fa-file-medical"></i>
+
+Senior Wellness Summary
+
+</h2>
+
+
+
+
+<p>
+
+
+Your current wellness score:
+
+<b>
+
+{{data.score}} / 100
+
+</b>
+
+
+</p>
+
+
+
+
+
+<p style="margin-top:15px;">
+
+
+Current Status:
+
+<b>
+
+{{data.result}}
+
+</b>
+
+
+</p>
+
+
+
+
+
+<p style="margin-top:15px;">
+
+
+This dashboard summarizes your lifestyle patterns based on your assessment responses.
+
+It helps you understand your wellness habits and encourages positive changes for healthy aging.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- =====================================
+BUTTONS
+===================================== -->
+
+
+<div style="text-align:center;margin:40px;">
+
+
+
+
+<a href="/senior">
+
+
+<button style="
+padding:15px 35px;
+background:#ff9800;
+color:white;
+border:none;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+">
+
+
+<i class="fa-solid fa-rotate"></i>
+
+Retake Assessment
+
+
+</button>
+
+
+</a>
+
+
+
+
+
+
+
+<a href="/">
+
+
+<button style="
+padding:15px 35px;
+background:#1565c0;
+color:white;
+border:none;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+">
+
+
+<i class="fa-solid fa-house"></i>
+
+Back To Home
+
+
+</button>
+
+
+</a>
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</body>
+
+</html>

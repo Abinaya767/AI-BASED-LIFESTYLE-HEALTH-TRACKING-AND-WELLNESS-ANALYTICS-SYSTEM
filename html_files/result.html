@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Health Assessment Result</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f8ff;
+padding:40px;
+}
+
+.container{
+
+max-width:1100px;
+margin:auto;
+
+}
+
+.header{
+
+background:white;
+padding:35px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+margin-bottom:30px;
+
+}
+
+.header i{
+
+font-size:60px;
+color:#1dbf73;
+margin-bottom:15px;
+
+}
+
+.header h1{
+
+color:#0f4c81;
+font-size:38px;
+margin-bottom:10px;
+
+}
+
+.header p{
+
+font-size:17px;
+color:#666;
+line-height:30px;
+
+}
+
+.summary{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-bottom:30px;
+
+}
+
+.card{
+
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.card h2{
+
+color:#0f4c81;
+margin-bottom:20px;
+font-size:24px;
+
+}
+
+.score-box{
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+.circle{
+
+width:220px;
+height:220px;
+border-radius:50%;
+background:linear-gradient(135deg,#1dbf73,#0f4c81);
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+color:white;
+
+}
+
+.circle h1{
+
+font-size:58px;
+
+}
+
+.circle p{
+
+font-size:18px;
+
+}
+
+.status{
+
+margin-top:25px;
+text-align:center;
+
+}
+
+.status h3{
+
+font-size:28px;
+color:#1dbf73;
+margin-bottom:10px;
+
+}
+
+.status p{
+
+color:#666;
+line-height:28px;
+
+}
+
+.health-summary p{
+
+line-height:34px;
+font-size:17px;
+color:#555;
+text-align:justify;
+
+}
+
+.health-summary ul{
+
+margin-top:20px;
+padding-left:22px;
+
+}
+
+.health-summary li{
+
+margin:12px 0;
+font-size:16px;
+color:#555;
+
+}
+
+@media(max-width:900px){
+
+.summary{
+
+grid-template-columns:1fr;
+
+}
+
+.circle{
+
+width:180px;
+height:180px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+
+<div class="header">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h1>Health Assessment Completed</h1>
+
+<p>
+
+Thank you
+<b>{{data.name}}</b>.
+
+Your health information has been successfully analyzed.
+
+Below is a personalized wellness summary generated from your responses.
+
+</p>
+
+</div>
+
+<!-- SCORE + SUMMARY -->
+
+<div class="summary">
+
+<div class="card">
+
+<h2>
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+Overall Wellness Score
+
+</h2>
+
+<div class="score-box">
+
+<div class="circle">
+
+<h1>{{100-data.risk}}</h1>
+
+<p>out of 100</p>
+
+</div>
+
+</div>
+
+<div class="status">
+
+<h3>{{data.result}}</h3>
+
+<p>
+
+This score represents your overall lifestyle wellness based on your health habits and assessment responses.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card health-summary">
+
+<h2>
+
+<i class="fa-solid fa-file-medical"></i>
+
+Health Summary
+
+</h2>
+
+<p>
+
+Your assessment indicates your current health habits and lifestyle patterns.
+
+This report is intended to provide awareness about your daily routine and help you make healthier lifestyle choices.
+
+Maintaining balanced nutrition, regular exercise, adequate hydration, sufficient sleep and reducing unhealthy habits can improve your overall wellness over time.
+
+</p>
+
+<ul>
+
+<li>✔ Lifestyle habits analyzed successfully</li>
+
+<li>✔ Wellness score generated</li>
+
+<li>✔ Healthy routine evaluated</li>
+
+<li>✔ Personalized recommendations available</li>
+
+</ul>
+
+</div>
+
+</div><!-- ================= LIFESTYLE HIGHLIGHTS ================= -->
+
+<div class="card" style="margin-bottom:30px;">
+
+<h2>
+<i class="fa-solid fa-chart-column"></i>
+Lifestyle Highlights
+</h2>
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+
+<div style="background:#eefaf5;padding:20px;border-radius:15px;">
+<h3 style="color:#1dbf73;">🍎 Nutrition</h3>
+<p><b>Fruits :</b> {{data.fruits}}</p>
+<p><b>Vegetables :</b> {{data.vegetables}}</p>
+</div>
+
+<div style="background:#eef6ff;padding:20px;border-radius:15px;">
+<h3 style="color:#0f4c81;">💧 Hydration</h3>
+<p>{{data.water}}</p>
+</div>
+
+<div style="background:#fff8e8;padding:20px;border-radius:15px;">
+<h3 style="color:#ff9800;">🏃 Physical Activity</h3>
+<p>{{data.exercise}}</p>
+</div>
+
+<div style="background:#fff0f0;padding:20px;border-radius:15px;">
+<h3 style="color:#ff4d4f;">😴 Healthy Routine</h3>
+<p><b>Sleep :</b> {{data.sleep}}</p>
+<p><b>Screen Time :</b> {{data.screen}}</p>
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= AI RECOMMENDATIONS ================= -->
+
+<div class="card" style="margin-bottom:30px;">
+
+<h2>
+<i class="fa-solid fa-robot"></i>
+Personalized AI Recommendations
+</h2>
+
+<div style="margin-top:20px;">
+
+<div style="background:#eefaf5;padding:18px;border-left:6px solid #1dbf73;border-radius:10px;margin-bottom:15px;">
+🍎 Eat a balanced diet rich in fruits and vegetables every day.
+</div>
+
+<div style="background:#eef6ff;padding:18px;border-left:6px solid #0f4c81;border-radius:10px;margin-bottom:15px;">
+💧 Drink enough water throughout the day to stay hydrated.
+</div>
+
+<div style="background:#fff8e8;padding:18px;border-left:6px solid #ff9800;border-radius:10px;margin-bottom:15px;">
+🏃 Engage in regular physical activity suitable for your age.
+</div>
+
+<div style="background:#fff0f0;padding:18px;border-left:6px solid #ff4d4f;border-radius:10px;">
+😴 Maintain proper sleep habits and reduce unnecessary screen time.
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= BUTTONS ================= -->
+
+<div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:30px;">
+
+<a href="/childdashboard">
+
+<button style="padding:16px 35px;background:#1dbf73;color:white;border:none;border-radius:12px;font-size:16px;cursor:pointer;">
+
+<i class="fa-solid fa-chart-line"></i>
+
+View Health Dashboard
+
+</button>
+
+</a>
+
+
+<a href="/child">
+
+<button style="padding:16px 35px;background:#0f4c81;color:white;border:none;border-radius:12px;font-size:16px;cursor:pointer;">
+
+<i class="fa-solid fa-rotate-right"></i>
+
+Take Assessment Again
+
+</button>
+
+</a>
+
+
+<a href="/">
+
+<button style="padding:16px 35px;background:#666;color:white;border:none;border-radius:12px;font-size:16px;cursor:pointer;">
+
+<i class="fa-solid fa-house"></i>
+
+Back to Home
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

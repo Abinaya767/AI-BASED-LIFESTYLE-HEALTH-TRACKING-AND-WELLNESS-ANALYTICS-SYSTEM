@@ -1,0 +1,2791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+AI Lifestyle Health Tracking System
+</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+<style>
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+
+html{
+scroll-behavior:smooth;
+}
+
+
+body{
+
+background:#f5f8ff;
+color:#333;
+
+}
+
+
+/* ================= NAVBAR ================= */
+
+
+nav{
+
+height:85px;
+
+width:100%;
+
+background:white;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 80px;
+
+position:fixed;
+
+top:0;
+
+z-index:1000;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+
+}
+
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+font-size:28px;
+
+font-weight:700;
+
+color:#0f4c81;
+
+}
+
+
+.logo i{
+
+font-size:35px;
+
+color:#1dbf73;
+
+}
+
+
+
+nav ul{
+
+display:flex;
+
+gap:35px;
+
+list-style:none;
+
+}
+
+
+nav ul li a{
+
+text-decoration:none;
+
+color:#555;
+
+font-weight:500;
+
+}
+
+
+nav ul li a:hover{
+
+color:#1dbf73;
+
+}
+
+
+
+.login-btn{
+
+background:#0f4c81;
+
+color:white;
+
+padding:13px 30px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+
+
+.login-btn:hover{
+
+background:#08355b;
+
+}
+
+
+
+
+
+/* ================= HERO ================= */
+
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:140px 90px 70px;
+
+}
+
+
+
+.hero-left{
+
+width:55%;
+
+}
+
+
+
+.badge{
+
+display:inline-block;
+
+padding:10px 25px;
+
+background:#e8fff4;
+
+color:#1dbf73;
+
+border-radius:30px;
+
+font-weight:600;
+
+margin-bottom:25px;
+
+}
+
+
+
+.hero h1{
+
+font-size:60px;
+
+line-height:75px;
+
+color:#0f172a;
+
+}
+
+
+
+.hero h1 span{
+
+color:#1dbf73;
+
+}
+
+
+
+.hero p{
+
+font-size:18px;
+
+line-height:35px;
+
+color:#666;
+
+margin-top:25px;
+
+margin-bottom:35px;
+
+}
+
+
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+}
+
+
+
+.primary-btn{
+
+background:#1dbf73;
+
+color:white;
+
+padding:16px 35px;
+
+border:none;
+
+border-radius:12px;
+
+font-size:16px;
+
+}
+
+
+
+.secondary-btn{
+
+background:white;
+
+border:2px solid #0f4c81;
+
+color:#0f4c81;
+
+padding:16px 35px;
+
+border-radius:12px;
+
+}
+
+
+
+.hero-right{
+
+width:40%;
+
+display:flex;
+
+justify-content:center;
+
+position:relative;
+
+}
+
+
+
+.circle{
+
+height:450px;
+
+width:450px;
+
+border-radius:50%;
+
+background:linear-gradient(
+135deg,
+#1dbf73,
+#0f4c81
+);
+
+opacity:.12;
+
+position:absolute;
+
+}
+
+
+
+.hero-right img{
+
+width:380px;
+
+position:relative;
+
+}
+
+
+
+.health-card{
+
+position:absolute;
+
+bottom:20px;
+
+left:0;
+
+background:white;
+
+padding:20px;
+
+border-radius:18px;
+
+box-shadow:0 15px 30px rgba(0,0,0,.15);
+
+display:flex;
+
+gap:15px;
+
+align-items:center;
+
+}
+
+
+
+.health-card i{
+
+font-size:35px;
+
+color:#1dbf73;
+
+}
+
+
+/* ================= STATISTICS ================= */
+
+
+.stats{
+
+width:90%;
+
+margin:80px auto;
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+
+}
+
+
+
+.stat-card{
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+.stat-card i{
+
+font-size:40px;
+
+color:#1dbf73;
+
+margin-bottom:15px;
+
+}
+
+
+
+.stat-card h2{
+
+font-size:38px;
+
+color:#0f172a;
+
+}
+
+
+
+.stat-card p{
+
+color:#666;
+
+}
+
+
+
+
+/* ================= ABOUT ================= */
+
+
+.about{
+
+width:90%;
+
+margin:120px auto;
+
+display:flex;
+
+gap:70px;
+
+align-items:center;
+
+}
+
+
+
+.about img{
+
+width:420px;
+
+}
+
+
+
+.about-content{
+
+width:55%;
+
+}
+
+
+
+.about-content h4{
+
+color:#1dbf73;
+
+}
+
+
+
+.about-content h2{
+
+font-size:45px;
+
+color:#0f172a;
+
+margin:15px 0;
+
+}
+
+
+
+.about-content p{
+
+font-size:18px;
+
+line-height:35px;
+
+color:#666;
+
+}
+
+
+
+.about-list{
+
+margin-top:25px;
+
+}
+
+
+
+.about-list p{
+
+margin:15px 0;
+
+}
+
+
+
+.about-list i{
+
+color:#1dbf73;
+
+margin-right:10px;
+
+}
+
+
+
+/* ================= RESPONSIVE ================= */
+
+
+@media(max-width:1000px){
+
+
+nav{
+
+padding:0 20px;
+
+}
+
+
+nav ul{
+
+display:none;
+
+}
+
+
+
+.hero{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+
+
+.hero-left,
+.hero-right{
+
+width:100%;
+
+}
+
+
+
+.hero h1{
+
+font-size:42px;
+
+line-height:55px;
+
+}
+
+
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+
+
+.stats{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+
+
+.about{
+
+flex-direction:column;
+
+}
+
+
+
+.about-content{
+
+width:100%;
+
+}
+
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<!-- NAVBAR -->
+
+
+<nav>
+
+
+<div class="logo">
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+HealthAnalytics
+
+</div>
+
+
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#features">Features</a></li>
+
+<li><a href="#work">How It Works</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+
+
+<a href="/login" class="login-btn">
+
+Get Started
+
+</a>
+
+
+</nav>
+
+
+
+
+
+<!-- HERO -->
+
+
+<section class="hero" id="home">
+
+
+<div class="hero-left">
+
+
+<div class="badge">
+
+<i class="fa-solid fa-shield-heart"></i>
+
+Smart Wellness Monitoring Platform
+
+</div>
+
+
+
+<h1>
+
+AI-Based
+
+<span>
+Lifestyle Health
+</span>
+
+Tracking and Wellness Analytics System
+
+</h1>
+
+
+
+<p>
+
+Analyze lifestyle habits, calculate wellness scores, visualize health insights and receive personalized recommendations through an intelligent healthcare analytics platform.
+
+</p>
+
+
+
+<div class="hero-buttons">
+
+
+<a href="/login">
+
+<button class="primary-btn">
+
+Start Assessment
+
+</button>
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="hero-right">
+
+
+<div class="circle"></div>
+
+
+<img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png">
+
+
+
+<div class="health-card">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<div>
+
+<h4>
+Personal Health Analytics
+</h4>
+
+<p>
+Lifestyle based insights
+</p>
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- STATISTICS -->
+
+
+<section class="stats">
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-users"></i>
+
+<h2>4</h2>
+
+<p>Age Categories</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-chart-column"></i>
+
+<h2>100%</h2>
+
+<p>Personalized Analysis</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+<h2>24/7</h2>
+
+<p>Health Awareness</p>
+
+</div>
+
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-file-medical"></i>
+
+<h2>Smart</h2>
+
+<p>Wellness Reports</p>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- ABOUT -->
+
+
+<section class="about" id="about">
+
+
+<img src="https://cdn-icons-png.flaticon.com/512/387/387561.png">
+
+
+
+<div class="about-content">
+
+
+<h4>
+ABOUT OUR SYSTEM
+</h4>
+
+
+
+<h2>
+Your Personal Wellness Intelligence Platform
+</h2>
+
+
+
+<p>
+
+The AI-Based Lifestyle Health Tracking and Wellness Analytics System helps users understand their daily lifestyle patterns through health assessments and analytics.
+
+</p>
+
+
+
+<div class="about-list">
+
+
+<p>
+
+<i class="fa-solid fa-circle-check"></i>
+
+Age-based health assessment
+
+</p>
+
+
+<p>
+
+<i class="fa-solid fa-circle-check"></i>
+
+Personalized wellness score calculation
+
+</p>
+
+
+<p>
+
+<i class="fa-solid fa-circle-check"></i>
+
+Interactive health dashboards
+
+</p>
+
+
+<p>
+
+<i class="fa-solid fa-circle-check"></i>
+
+Lifestyle improvement recommendations
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+</section><!-- ================= FEATURES ================= -->
+
+
+<section class="features" id="features">
+
+
+<div class="section-title">
+
+
+<h4>
+OUR FEATURES
+</h4>
+
+
+<h2>
+Smart Healthcare Analytics Features
+</h2>
+
+
+<p>
+A complete wellness monitoring system designed to analyze lifestyle habits and provide meaningful health insights.
+</p>
+
+
+</div>
+
+
+
+
+<div class="feature-grid">
+
+
+
+<div class="feature-card">
+
+
+<i class="fa-solid fa-user-group"></i>
+
+
+<h3>
+Age-Based Assessment
+</h3>
+
+
+<p>
+Separate health assessment modules are available for children, teenagers, adults and senior citizens.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature-card">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+<h3>
+Wellness Score Analysis
+</h3>
+
+
+<p>
+The system calculates a personalized wellness score based on lifestyle habits and health responses.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature-card">
+
+
+<i class="fa-solid fa-chart-pie"></i>
+
+
+<h3>
+Interactive Dashboard
+</h3>
+
+
+<p>
+Visualize health performance using charts, analytics and personalized wellness summaries.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature-card">
+
+
+<i class="fa-solid fa-robot"></i>
+
+
+<h3>
+Smart Recommendations
+</h3>
+
+
+<p>
+Receive lifestyle improvement suggestions based on your assessment results.
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+
+<section class="process" id="work">
+
+
+<div class="section-title">
+
+
+<h4>
+HOW IT WORKS
+</h4>
+
+
+<h2>
+Simple Steps Towards Better Wellness
+</h2>
+
+
+<p>
+Complete your assessment and understand your lifestyle health condition.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="steps">
+
+
+
+<div class="step">
+
+
+<span>
+1
+</span>
+
+
+<i class="fa-solid fa-user"></i>
+
+
+<h3>
+Create Profile
+</h3>
+
+
+<p>
+Enter your basic details and start your health journey.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="step">
+
+
+<span>
+2
+</span>
+
+
+<i class="fa-solid fa-clipboard-question"></i>
+
+
+<h3>
+Health Assessment
+</h3>
+
+
+<p>
+Answer lifestyle related questions based on your age category.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="step">
+
+
+<span>
+3
+</span>
+
+
+<i class="fa-solid fa-calculator"></i>
+
+
+<h3>
+Wellness Calculation
+</h3>
+
+
+<p>
+The system analyzes your habits and generates your wellness score.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="step">
+
+
+<span>
+4
+</span>
+
+
+<i class="fa-solid fa-chart-column"></i>
+
+
+<h3>
+View Dashboard
+</h3>
+
+
+<p>
+Explore analytics, charts and personalized health recommendations.
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ================= AGE MODULES ================= -->
+
+
+<section class="modules">
+
+
+
+<div class="section-title">
+
+
+<h4>
+HEALTH ASSESSMENT MODULES
+</h4>
+
+
+<h2>
+Personalized For Every Age Group
+</h2>
+
+
+</div>
+
+
+
+
+
+<div class="module-grid">
+
+
+
+
+
+<div class="module-card">
+
+
+<i class="fa-solid fa-child-reaching"></i>
+
+
+<h3>
+Child Health
+</h3>
+
+
+<p>
+
+Analyzes nutrition, water intake, physical activity, sleep and screen habits.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="module-card">
+
+
+<i class="fa-solid fa-user-graduate"></i>
+
+
+<h3>
+Teen Wellness
+</h3>
+
+
+<p>
+
+Evaluates food habits, stress level, exercise, hydration and lifestyle balance.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="module-card">
+
+
+<i class="fa-solid fa-user-tie"></i>
+
+
+<h3>
+Adult Health
+</h3>
+
+
+<p>
+
+Focuses on exercise, sleep, stress, smoking and alcohol related lifestyle factors.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="module-card">
+
+
+<i class="fa-solid fa-person-cane"></i>
+
+
+<h3>
+Senior Care
+</h3>
+
+
+<p>
+
+Monitors mobility, hydration, blood pressure, sugar level and daily wellness.
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ================= DASHBOARD PREVIEW ================= -->
+
+
+
+<section class="preview">
+
+
+
+<div class="preview-text">
+
+
+<h4>
+PERSONAL HEALTH DASHBOARD
+</h4>
+
+
+
+<h2>
+Transform Health Data Into Meaningful Insights
+</h2>
+
+
+
+<p>
+
+Each assessment generates a personalized dashboard containing wellness score, risk percentage, lifestyle analytics and improvement recommendations.
+
+</p>
+
+
+
+<ul>
+
+
+<li>
+<i class="fa-solid fa-check"></i>
+Health Score Visualization
+</li>
+
+
+<li>
+<i class="fa-solid fa-check"></i>
+Lifestyle Habit Analysis
+</li>
+
+
+<li>
+<i class="fa-solid fa-check"></i>
+Personalized Recommendations
+</li>
+
+
+<li>
+<i class="fa-solid fa-check"></i>
+Graphical Health Reports
+</li>
+
+
+</ul>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="dashboard-preview">
+
+
+
+<div class="dashboard-box">
+
+
+
+<h3>
+Wellness Score
+</h3>
+
+
+<div class="progress">
+
+<div class="green"></div>
+
+</div>
+
+
+
+
+<h3>
+Lifestyle Analysis
+</h3>
+
+
+<div class="progress">
+
+<div class="blue"></div>
+
+</div>
+
+
+
+
+
+<h3>
+Health Improvement
+</h3>
+
+
+<div class="progress">
+
+<div class="orange"></div>
+
+</div>
+
+
+
+
+
+<h3>
+Personal Insights
+</h3>
+
+
+<div class="progress">
+
+<div class="red"></div>
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+<style>
+
+
+/* FEATURES */
+
+
+.features,
+.process,
+.modules,
+.preview{
+
+width:90%;
+
+margin:120px auto;
+
+}
+
+
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:60px;
+
+}
+
+
+
+.section-title h4{
+
+color:#1dbf73;
+
+font-weight:600;
+
+}
+
+
+
+.section-title h2{
+
+font-size:45px;
+
+color:#0f172a;
+
+margin:15px 0;
+
+}
+
+
+
+.section-title p{
+
+color:#666;
+
+font-size:18px;
+
+}
+
+
+
+.feature-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+
+}
+
+
+
+.feature-card{
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+.feature-card i{
+
+font-size:40px;
+
+color:#1dbf73;
+
+margin-bottom:20px;
+
+}
+
+
+
+.feature-card h3{
+
+color:#0f172a;
+
+margin-bottom:15px;
+
+}
+
+
+
+.feature-card p{
+
+color:#666;
+
+line-height:28px;
+
+}
+
+
+
+
+
+/* STEPS */
+
+
+.steps{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+
+}
+
+
+
+.step{
+
+background:white;
+
+padding:35px 20px;
+
+text-align:center;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+.step span{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+margin:auto;
+
+width:55px;
+
+height:55px;
+
+background:#1dbf73;
+
+color:white;
+
+border-radius:50%;
+
+}
+
+
+
+.step i{
+
+font-size:40px;
+
+color:#0f4c81;
+
+margin:25px;
+
+}
+
+
+
+.step p{
+
+color:#666;
+
+line-height:28px;
+
+}
+
+
+
+
+
+/* MODULES */
+
+
+.module-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+
+}
+
+
+
+.module-card{
+
+background:white;
+
+padding:35px;
+
+text-align:center;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+.module-card i{
+
+font-size:45px;
+
+color:#1dbf73;
+
+margin-bottom:20px;
+
+}
+
+
+
+.module-card h3{
+
+color:#0f172a;
+
+}
+
+
+
+.module-card p{
+
+color:#666;
+
+line-height:28px;
+
+}
+
+
+
+
+/* DASHBOARD */
+
+
+.preview{
+
+display:flex;
+
+gap:70px;
+
+align-items:center;
+
+}
+
+
+
+.preview-text{
+
+width:50%;
+
+}
+
+
+
+.preview-text h4{
+
+color:#1dbf73;
+
+}
+
+
+
+.preview-text h2{
+
+font-size:45px;
+
+color:#0f172a;
+
+margin:15px 0;
+
+}
+
+
+
+.preview-text p{
+
+color:#666;
+
+font-size:18px;
+
+line-height:32px;
+
+}
+
+
+
+.preview-text li{
+
+list-style:none;
+
+margin:18px 0;
+
+font-size:17px;
+
+}
+
+
+
+.preview-text li i{
+
+color:#1dbf73;
+
+margin-right:10px;
+
+}
+
+
+
+.dashboard-preview{
+
+width:50%;
+
+}
+
+
+
+.dashboard-box{
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 15px 30px rgba(0,0,0,.1);
+
+}
+
+
+
+.progress{
+
+height:18px;
+
+background:#eee;
+
+border-radius:20px;
+
+margin:20px 0;
+
+}
+
+
+
+.green{
+
+height:100%;
+
+width:90%;
+
+background:#1dbf73;
+
+border-radius:20px;
+
+}
+
+
+
+.blue{
+
+height:100%;
+
+width:75%;
+
+background:#0f4c81;
+
+border-radius:20px;
+
+}
+
+
+
+.orange{
+
+height:100%;
+
+width:65%;
+
+background:#ff9800;
+
+border-radius:20px;
+
+}
+
+
+
+.red{
+
+height:100%;
+
+width:85%;
+
+background:#ff5252;
+
+border-radius:20px;
+
+}
+
+
+
+@media(max-width:1000px){
+
+
+.feature-grid,
+.steps,
+.module-grid{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+
+.preview{
+
+flex-direction:column;
+
+}
+
+
+.preview-text,
+.dashboard-preview{
+
+width:100%;
+
+}
+
+
+}
+
+
+
+</style><!-- ================= DISEASE & HEALTH INSIGHTS ================= -->
+
+
+<section class="disease">
+
+
+<div class="section-title">
+
+
+<h4>
+HEALTH INSIGHTS
+</h4>
+
+
+<h2>
+Lifestyle Factors We Analyze
+</h2>
+
+
+<p>
+Understand important health factors that influence your overall wellness.
+</p>
+
+
+</div>
+
+
+
+
+<div class="disease-grid">
+
+
+
+<div class="disease-card">
+
+
+<i class="fa-solid fa-apple-whole"></i>
+
+
+<h3>
+Nutrition Analysis
+</h3>
+
+
+<p>
+
+Analyzes food habits, fruit and vegetable consumption to understand dietary wellness.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="disease-card">
+
+
+<i class="fa-solid fa-person-running"></i>
+
+
+<h3>
+Physical Activity
+</h3>
+
+
+<p>
+
+Evaluates exercise patterns and daily activity levels for maintaining a healthy lifestyle.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="disease-card">
+
+
+<i class="fa-solid fa-bed"></i>
+
+
+<h3>
+Sleep Monitoring
+</h3>
+
+
+<p>
+
+Tracks sleep duration and provides suggestions for better sleep habits.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ================= CTA ================= -->
+
+
+<section class="cta">
+
+
+
+<h2>
+
+Start Your Wellness Journey Today
+
+</h2>
+
+
+
+<p>
+
+Analyze your lifestyle, understand your wellness score and make smarter health decisions.
+
+</p>
+
+
+
+<a href="/login">
+
+
+<button>
+
+Start Assessment
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+
+</a>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= CONTACT ================= -->
+
+
+<section class="contact" id="contact">
+
+
+
+<div class="section-title">
+
+
+<h4>
+CONTACT
+</h4>
+
+
+<h2>
+Get In Touch With Us
+</h2>
+
+
+</div>
+
+
+
+
+
+
+<div class="contact-grid">
+
+
+
+
+
+<div class="contact-card">
+
+
+<i class="fa-solid fa-location-dot"></i>
+
+
+<h3>
+Location
+</h3>
+
+
+<p>
+Chennai, Tamil Nadu, India
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="contact-card">
+
+
+<i class="fa-solid fa-envelope"></i>
+
+
+<h3>
+Email
+</h3>
+
+
+<p>
+healthanalytics@gmail.com
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="contact-card">
+
+
+<i class="fa-solid fa-phone"></i>
+
+
+<h3>
+Support
+</h3>
+
+
+<p>
++91 90000 00000
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+
+
+<footer>
+
+
+
+<div class="footer-container">
+
+
+
+<div>
+
+
+<h2>
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+HealthAnalytics
+
+</h2>
+
+
+
+<p>
+
+AI-Based Lifestyle Health Tracking and Wellness Analytics System helps users understand their health patterns through assessments, analytics and personalized recommendations.
+
+</p>
+
+
+
+
+<div class="social-icons">
+
+
+<i class="fa-brands fa-instagram"></i>
+
+<i class="fa-brands fa-linkedin"></i>
+
+<i class="fa-brands fa-github"></i>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+
+<h3>
+Quick Links
+</h3>
+
+
+<ul>
+
+
+<li>
+<a href="#home">
+Home
+</a>
+</li>
+
+
+<li>
+<a href="#about">
+About
+</a>
+</li>
+
+
+<li>
+<a href="#features">
+Features
+</a>
+</li>
+
+
+<li>
+<a href="#contact">
+Contact
+</a>
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<h3>
+Services
+</h3>
+
+
+<ul>
+
+
+<li>
+Health Assessment
+</li>
+
+
+<li>
+Wellness Analytics
+</li>
+
+
+<li>
+Personal Dashboard
+</li>
+
+
+<li>
+Lifestyle Recommendations
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<div class="copyright">
+
+
+© 2026 AI Lifestyle Health Tracking and Wellness Analytics System | All Rights Reserved
+
+
+</div>
+
+
+
+
+</footer>
+
+
+
+
+
+
+
+<style>
+
+
+/* DISEASE SECTION */
+
+
+.disease{
+
+width:90%;
+
+margin:120px auto;
+
+}
+
+
+
+.disease-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:30px;
+
+}
+
+
+
+.disease-card{
+
+background:white;
+
+padding:35px;
+
+text-align:center;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+.disease-card i{
+
+font-size:45px;
+
+color:#1dbf73;
+
+margin-bottom:20px;
+
+}
+
+
+
+.disease-card h3{
+
+color:#0f172a;
+
+margin-bottom:15px;
+
+}
+
+
+
+.disease-card p{
+
+color:#666;
+
+line-height:30px;
+
+}
+
+
+
+
+
+
+
+
+/* CTA */
+
+
+.cta{
+
+width:90%;
+
+margin:120px auto;
+
+padding:80px;
+
+border-radius:30px;
+
+background:linear-gradient(
+135deg,
+#0f4c81,
+#1dbf73
+);
+
+text-align:center;
+
+color:white;
+
+}
+
+
+
+.cta h2{
+
+font-size:45px;
+
+margin-bottom:20px;
+
+}
+
+
+
+.cta p{
+
+font-size:18px;
+
+margin-bottom:30px;
+
+}
+
+
+
+.cta button{
+
+padding:16px 35px;
+
+border:none;
+
+border-radius:12px;
+
+background:white;
+
+color:#0f4c81;
+
+font-size:17px;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+
+
+
+
+
+
+/* CONTACT */
+
+
+.contact{
+
+width:90%;
+
+margin:120px auto;
+
+}
+
+
+
+.contact-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:30px;
+
+}
+
+
+
+.contact-card{
+
+background:white;
+
+padding:35px;
+
+text-align:center;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+.contact-card i{
+
+font-size:35px;
+
+color:#1dbf73;
+
+margin-bottom:20px;
+
+}
+
+
+
+.contact-card h3{
+
+color:#0f172a;
+
+margin-bottom:10px;
+
+}
+
+
+
+.contact-card p{
+
+color:#666;
+
+}
+
+
+
+
+
+
+
+/* FOOTER */
+
+
+footer{
+
+background:#0f172a;
+
+color:white;
+
+padding:60px 8% 20px;
+
+}
+
+
+
+.footer-container{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr;
+
+gap:50px;
+
+}
+
+
+
+.footer-container h2{
+
+margin-bottom:20px;
+
+}
+
+
+
+.footer-container h2 i{
+
+color:#1dbf73;
+
+}
+
+
+
+.footer-container h3{
+
+margin-bottom:20px;
+
+}
+
+
+
+.footer-container p{
+
+color:#cbd5e1;
+
+line-height:30px;
+
+}
+
+
+
+.footer-container ul{
+
+list-style:none;
+
+}
+
+
+
+.footer-container li{
+
+margin-bottom:12px;
+
+color:#cbd5e1;
+
+}
+
+
+
+.footer-container a{
+
+text-decoration:none;
+
+color:#cbd5e1;
+
+}
+
+
+
+.social-icons i{
+
+font-size:25px;
+
+margin-right:15px;
+
+margin-top:20px;
+
+}
+
+
+
+.copyright{
+
+text-align:center;
+
+border-top:1px solid #334155;
+
+margin-top:40px;
+
+padding-top:20px;
+
+color:#cbd5e1;
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+
+.disease-grid,
+.contact-grid,
+.footer-container{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.cta{
+
+padding:50px 20px;
+
+}
+
+
+
+.cta h2{
+
+font-size:32px;
+
+}
+
+
+}
+
+
+
+</style>
+
+
+
+</body>
+
+</html>

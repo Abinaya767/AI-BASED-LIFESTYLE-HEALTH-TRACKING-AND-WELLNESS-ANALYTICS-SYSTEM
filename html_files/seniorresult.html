@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Senior Health Summary</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+<style>
+
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+
+}
+
+
+body{
+
+background:#eef5ff;
+padding:40px;
+
+}
+
+
+.container{
+
+max-width:1200px;
+margin:auto;
+
+}
+
+
+
+
+/* HEADER */
+
+
+.header{
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
+
+}
+
+
+
+.header h1{
+
+color:#0f4c81;
+
+font-size:36px;
+
+}
+
+
+
+.header p{
+
+color:#666;
+
+margin-top:10px;
+
+line-height:30px;
+
+}
+
+
+
+
+/* SCORE */
+
+
+.score-box{
+
+
+width:180px;
+
+height:180px;
+
+
+border-radius:50%;
+
+
+background:linear-gradient(135deg,#795548,#1565c0);
+
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+
+color:white;
+
+
+}
+
+
+.score-box h1{
+
+font-size:48px;
+
+}
+
+
+
+.score-box p{
+
+font-size:16px;
+
+}
+
+
+
+
+
+/* CARDS */
+
+
+.cards{
+
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+
+gap:25px;
+
+
+margin-bottom:35px;
+
+
+}
+
+
+
+.card{
+
+
+background:white;
+
+padding:25px;
+
+border-radius:18px;
+
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.card i{
+
+
+font-size:35px;
+
+
+color:#795548;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+.card h3{
+
+
+color:#0f4c81;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+.card p{
+
+
+color:#555;
+
+
+line-height:30px;
+
+
+}
+
+
+
+
+/* REPORT */
+
+
+.report{
+
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+
+margin-bottom:30px;
+
+
+}
+
+
+
+.report h2{
+
+
+color:#0f4c81;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+.report p{
+
+
+color:#555;
+
+
+line-height:32px;
+
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+
+.header{
+
+
+flex-direction:column;
+
+text-align:center;
+
+gap:25px;
+
+
+}
+
+
+
+.cards{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<div class="container">
+
+
+
+<!-- HEADER -->
+
+
+<div class="header">
+
+
+
+<div>
+
+
+<h1>
+
+<i class="fa-solid fa-person-cane"></i>
+
+Senior Health Summary
+
+</h1>
+
+
+
+<p>
+
+
+Welcome <b>{{data.name}}</b>
+
+
+<br>
+
+
+Your wellness assessment has been completed.
+
+This report provides insights about your health habits and daily lifestyle.
+
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="score-box">
+
+
+<h1>
+
+{{data.score}}
+
+</h1>
+
+
+<p>
+
+Wellness Score
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- INFORMATION CARDS -->
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-user"></i>
+
+
+<h3>
+
+Personal Information
+
+</h3>
+
+
+<p>
+
+
+<b>Name:</b> {{data.name}}
+
+<br>
+
+
+<b>Email:</b> {{data.email}}
+
+
+<br>
+
+
+<b>Age:</b> {{data.age}}
+
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+
+<h3>
+
+Wellness Status
+
+</h3>
+
+
+<p>
+
+
+<b>Status:</b>
+
+{{data.result}}
+
+
+</p>
+
+
+<p>
+
+Your lifestyle habits were analyzed based on your responses.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+<h3>
+
+Health Overview
+
+</h3>
+
+
+<p>
+
+
+The assessment includes activity, hydration, sleep, health awareness and daily habits.
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<!-- ASSESSMENT OVERVIEW -->
+
+
+<div class="report">
+
+
+<h2>
+
+<i class="fa-solid fa-file-medical"></i>
+
+Assessment Overview
+
+</h2>
+
+
+<p>
+
+This wellness assessment helps understand your current lifestyle patterns.
+
+It highlights positive habits and areas where small changes can support better daily health.
+
+</p>
+
+
+</div>
+<!-- =====================================
+SENIOR HEALTH INSIGHTS
+===================================== -->
+
+
+<div class="cards">
+
+
+
+<!-- STRENGTHS -->
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-circle-check"></i>
+
+
+<h3>
+
+Your Strengths
+
+</h3>
+
+
+<p>
+
+Healthy habits that support your overall wellness.
+
+</p>
+
+
+
+<ul style="margin-top:15px;padding-left:20px;line-height:32px;color:#555;">
+
+
+
+{% if data.walking=="Yes" %}
+
+<li>🚶 Regular walking habit</li>
+
+{% endif %}
+
+
+
+{% if data.water=="More than 2 Litres" %}
+
+<li>💧 Good hydration level</li>
+
+{% endif %}
+
+
+
+
+{% if data.sleep=="7-9 Hours" %}
+
+<li>😴 Healthy sleeping routine</li>
+
+{% endif %}
+
+
+
+{% if data.bp=="Normal" %}
+
+<li>❤️ Maintaining blood pressure awareness</li>
+
+{% endif %}
+
+
+
+{% if data.sugar=="Normal" %}
+
+<li>🩺 Good health monitoring habits</li>
+
+{% endif %}
+
+
+
+
+<li>⭐ Regular wellness awareness</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+<!-- FOCUS AREAS -->
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-bullseye"></i>
+
+
+<h3>
+
+Focus Areas
+
+</h3>
+
+
+
+<p>
+
+Small lifestyle improvements that can support better wellness.
+
+</p>
+
+
+
+
+<ul style="margin-top:15px;padding-left:20px;line-height:32px;color:#555;">
+
+
+
+{% if data.walking=="No" %}
+
+<li>🚶 Include gentle walking or physical activity.</li>
+
+{% endif %}
+
+
+
+{% if data.water=="Less than 1 Litre" %}
+
+<li>💧 Increase daily water intake.</li>
+
+{% endif %}
+
+
+
+{% if data.sleep=="Less than 6 Hours" %}
+
+<li>😴 Improve sleep duration.</li>
+
+{% endif %}
+
+
+
+
+{% if data.bp=="High" %}
+
+<li>❤️ Maintain regular blood pressure monitoring.</li>
+
+{% endif %}
+
+
+
+
+{% if data.sugar=="High" %}
+
+<li>🩺 Follow healthy sugar management habits.</li>
+
+{% endif %}
+
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- WELLNESS INSIGHT -->
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-lightbulb"></i>
+
+
+<h3>
+
+Wellness Insight
+
+</h3>
+
+
+<p>
+
+
+Maintaining independence, staying active and following healthy routines are important for senior wellness.
+
+
+</p>
+
+
+
+<p style="margin-top:15px;">
+
+
+Balanced nutrition, regular movement and proper rest help support a healthy lifestyle.
+
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- =====================================
+PERSONALIZED RECOMMENDATIONS
+===================================== -->
+
+
+<div class="report">
+
+
+<h2>
+
+
+<i class="fa-solid fa-robot"></i>
+
+Personalized Wellness Recommendations
+
+
+</h2>
+
+
+
+<div style="margin-top:20px;line-height:35px;color:#555;">
+
+
+
+
+{% if data.walking=="No" %}
+
+<p>
+
+🚶 Try adding gentle walking or stretching exercises based on comfort level.
+
+</p>
+
+
+{% else %}
+
+<p>
+
+🚶 Continue your regular walking routine to stay active.
+
+</p>
+
+
+{% endif %}
+
+
+
+
+
+{% if data.water=="Less than 1 Litre" %}
+
+<p>
+
+💧 Increase water intake throughout the day.
+
+</p>
+
+
+{% else %}
+
+<p>
+
+💧 Continue maintaining good hydration.
+
+</p>
+
+
+{% endif %}
+
+
+
+
+
+{% if data.sleep=="Less than 6 Hours" %}
+
+<p>
+
+😴 Maintain a regular sleep schedule for better rest.
+
+</p>
+
+
+{% else %}
+
+<p>
+
+😴 Continue your healthy sleeping pattern.
+
+</p>
+
+
+{% endif %}
+
+
+
+
+
+{% if data.bp=="High" %}
+
+<p>
+
+❤️ Monitor blood pressure regularly and follow healthy habits.
+
+</p>
+
+
+{% endif %}
+
+
+
+
+
+{% if data.sugar=="High" %}
+
+<p>
+
+🩺 Maintain balanced meals and regular health monitoring.
+
+</p>
+
+
+{% endif %}
+
+
+
+
+<p>
+
+🥗 Include nutritious foods with adequate vitamins and minerals.
+
+</p>
+
+
+
+<p>
+
+👨‍👩‍👧 Stay socially connected and engage in enjoyable activities.
+
+</p>
+
+
+
+</div>
+
+
+</div>
+<!-- =====================================
+SENIOR WELLNESS TIPS
+===================================== -->
+
+
+<div class="report">
+
+
+<h2>
+
+<i class="fa-solid fa-heart"></i>
+
+Healthy Living Tips
+
+</h2>
+
+
+
+
+<div class="cards" style="margin-top:25px;">
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-person-walking"></i>
+
+
+<h3>
+
+Stay Active
+
+</h3>
+
+
+<p>
+
+Gentle activities like walking, stretching and light exercises can help maintain mobility and strength.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-apple-whole"></i>
+
+
+<h3>
+
+Balanced Nutrition
+
+</h3>
+
+
+<p>
+
+Include nutritious foods with proteins, fruits, vegetables and essential nutrients.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-user-group"></i>
+
+
+<h3>
+
+Stay Connected
+
+</h3>
+
+
+<p>
+
+Social interaction, hobbies and spending time with loved ones support emotional wellness.
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- =====================================
+NEXT WELLNESS GOAL
+===================================== -->
+
+
+<div class="report">
+
+
+<h2>
+
+<i class="fa-solid fa-bullseye"></i>
+
+Your Wellness Goal
+
+</h2>
+
+
+
+<p>
+
+Focus on maintaining daily healthy routines including movement, hydration, balanced meals and proper rest.
+
+</p>
+
+
+
+<p style="margin-top:15px;">
+
+Regular wellness awareness helps you continue enjoying a healthier and more active lifestyle.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- =====================================
+BUTTONS
+===================================== -->
+
+
+<div style="text-align:center;margin:40px 0;">
+
+
+
+
+<a href="/seniordashboard">
+
+
+<button style="
+padding:15px 35px;
+background:#795548;
+color:white;
+border:none;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+">
+
+
+<i class="fa-solid fa-chart-column"></i>
+
+
+View Dashboard
+
+
+</button>
+
+
+</a>
+
+
+
+
+
+
+<a href="/senior">
+
+
+<button style="
+padding:15px 35px;
+background:#ff9800;
+color:white;
+border:none;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+">
+
+
+<i class="fa-solid fa-rotate"></i>
+
+
+Take Assessment Again
+
+
+</button>
+
+
+</a>
+
+
+
+
+
+
+<a href="/">
+
+
+<button style="
+padding:15px 35px;
+background:#1565c0;
+color:white;
+border:none;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+">
+
+
+<i class="fa-solid fa-house"></i>
+
+
+Back To Home
+
+
+</button>
+
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</body>
+
+
+</html>

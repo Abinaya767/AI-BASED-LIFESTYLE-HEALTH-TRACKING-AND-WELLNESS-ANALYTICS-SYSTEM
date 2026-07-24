@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Teen Health Assessment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f8ff;
+}
+
+.container{
+width:75%;
+margin:40px auto;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+h1{
+text-align:center;
+color:#0f4c81;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#666;
+margin-bottom:35px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.question{
+margin-bottom:25px;
+}
+
+label{
+display:block;
+font-weight:600;
+margin-bottom:10px;
+color:#333;
+}
+
+input,select{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+}
+
+button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:12px;
+background:#1dbf73;
+color:white;
+font-size:17px;
+cursor:pointer;
+}
+
+button:hover{
+background:#159b5d;
+}
+
+.icon{
+color:#1dbf73;
+margin-right:8px;
+}
+
+@media(max-width:800px){
+
+.container{
+width:90%;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+<i class="fa-solid fa-user-graduate"></i>
+Teen Health Assessment
+</h1>
+
+<p class="subtitle">
+Tell us about your daily lifestyle to receive a personalized wellness report.
+</p>
+
+<form action="/result" method="POST">
+
+<div class="row">
+
+<div class="question">
+<label><i class="fa-solid fa-user icon"></i>Name</label>
+<input type="text" name="teen_name" required>
+</div>
+
+<div class="question">
+<label><i class="fa-solid fa-cake-candles icon"></i>Age</label>
+<input type="number" name="age" min="13" max="19" required>
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="question">
+<label><i class="fa-solid fa-ruler icon"></i>Height (cm)</label>
+<input type="number" name="height" required>
+</div>
+
+<div class="question">
+<label><i class="fa-solid fa-weight-scale icon"></i>Weight (kg)</label>
+<input type="number" name="weight" required>
+</div>
+
+</div>
+
+<div class="question">
+<label><i class="fa-solid fa-apple-whole icon"></i>Fruit Consumption</label>
+<select name="fruits">
+<option>Daily</option>
+<option>Sometimes</option>
+<option>Rarely</option>
+</select>
+</div>
+
+<div class="question">
+<label><i class="fa-solid fa-person-running icon"></i>Exercise / Sports</label>
+<select name="exercise">
+<option>Less than 30 Minutes</option>
+<option>30–60 Minutes</option>
+<option>More than 1 Hour</option>
+</select>
+</div>
+
+<div class="question">
+<label><i class="fa-solid fa-bed icon"></i>Sleep Duration</label>
+<select name="sleep">
+<option>Less than 6 Hours</option>
+<option>6–8 Hours</option>
+<option>More than 8 Hours</option>
+</select>
+</div>
+
+<div class="question">
+<label><i class="fa-solid fa-mobile-screen-button icon"></i>Daily Screen Time</label>
+<select name="screen">
+<option>Less than 2 Hours</option>
+<option>2–5 Hours</option>
+<option>More than 5 Hours</option>
+</select>
+</div>
+
+<div class="question">
+<label><i class="fa-solid fa-burger icon"></i>Fast Food Consumption</label>
+<select name="junkfood">
+<option>Rarely</option>
+<option>1–2 Times / Week</option>
+<option>Frequently</option>
+</select>
+</div>
+
+<div class="question">
+<label><i class="fa-solid fa-brain icon"></i>Stress Level</label>
+<select name="stress">
+<option>Low</option>
+<option>Moderate</option>
+<option>High</option>
+</select>
+</div>
+
+<div class="question">
+<label><i class="fa-solid fa-glass-water icon"></i>Daily Water Intake</label>
+<select name="water">
+<option>Less than 1 Litre</option>
+<option>1–2 Litres</option>
+<option>More than 2 Litres</option>
+</select>
+</div>
+
+<button type="submit">
+<i class="fa-solid fa-chart-column"></i>
+Generate Health Summary
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adult Health Assessment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f8ff;
+}
+
+.container{
+width:75%;
+margin:40px auto;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+h1{
+text-align:center;
+color:#0f4c81;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#666;
+margin-bottom:35px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.question{
+margin-bottom:25px;
+}
+
+label{
+display:block;
+font-weight:600;
+margin-bottom:10px;
+color:#333;
+}
+
+input,select{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+}
+
+button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:12px;
+background:#1dbf73;
+color:white;
+font-size:17px;
+cursor:pointer;
+}
+
+button:hover{
+background:#159b5d;
+}
+
+.icon{
+color:#1dbf73;
+margin-right:8px;
+}
+
+@media(max-width:800px){
+
+.container{
+width:90%;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+<i class="fa-solid fa-user"></i>
+Adult Health Assessment
+</h1>
+
+<p class="subtitle">
+Complete the assessment to receive your personalized wellness report.
+</p>
+
+<form action="/result" method="POST">
+
+<div class="row">
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-user icon"></i>
+Full Name
+</label>
+
+<input type="text" name="adult_name" required>
+
+</div>
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-cake-candles icon"></i>
+Age
+</label>
+
+<input type="number" name="age" min="20" max="59" required>
+
+</div>
+
+</div>
+
+
+
+<div class="row">
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-ruler-vertical icon"></i>
+Height (cm)
+</label>
+
+<input type="number" name="height" required>
+
+</div>
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-weight-scale icon"></i>
+Weight (kg)
+</label>
+
+<input type="number" name="weight" required>
+
+</div>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-venus-mars icon"></i>
+Gender
+</label>
+
+<select name="gender">
+
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-person-running icon"></i>
+Daily Physical Activity
+</label>
+
+<select name="exercise">
+
+<option>Less than 30 Minutes</option>
+<option>30 - 60 Minutes</option>
+<option>More than 1 Hour</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-apple-whole icon"></i>
+Fruit & Vegetable Intake
+</label>
+
+<select name="nutrition">
+
+<option>Daily</option>
+<option>Sometimes</option>
+<option>Rarely</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-glass-water icon"></i>
+Daily Water Intake
+</label>
+
+<select name="water">
+
+<option>Less than 1 Litre</option>
+<option>1 - 2 Litres</option>
+<option>More than 2 Litres</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-bed icon"></i>
+Average Sleep Duration
+</label>
+
+<select name="sleep">
+
+<option>Less than 6 Hours</option>
+<option>6 - 8 Hours</option>
+<option>More than 8 Hours</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-mobile-screen-button icon"></i>
+Daily Screen Time
+</label>
+
+<select name="screen">
+
+<option>Less than 2 Hours</option>
+<option>2 - 5 Hours</option>
+<option>More than 5 Hours</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-smoking icon"></i>
+Smoking Habit
+</label>
+
+<select name="smoking">
+
+<option>Never</option>
+<option>Occasionally</option>
+<option>Regularly</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-wine-glass icon"></i>
+Alcohol Consumption
+</label>
+
+<select name="alcohol">
+
+<option>Never</option>
+<option>Occasionally</option>
+<option>Frequently</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-briefcase icon"></i>
+Work Stress Level
+</label>
+
+<select name="stress">
+
+<option>Low</option>
+<option>Moderate</option>
+<option>High</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-heart-pulse icon"></i>
+Existing Health Condition
+</label>
+
+<select name="condition">
+
+<option>None</option>
+<option>Blood Pressure</option>
+<option>Diabetes</option>
+<option>Heart Related</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+
+<div class="question">
+
+<label>
+<i class="fa-solid fa-calendar-check icon"></i>
+How Often Do You Get a Health Check-up?
+</label>
+
+<select name="checkup">
+
+<option>Every 6 Months</option>
+<option>Once a Year</option>
+<option>Only When Needed</option>
+
+</select>
+
+</div>
+
+
+
+<button type="submit">
+
+<i class="fa-solid fa-chart-column"></i>
+
+Generate Health Summary
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

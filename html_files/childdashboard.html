@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Child Health Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#eef5ff;
+}
+
+.container{
+width:92%;
+margin:40px auto;
+}
+
+.header{
+
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+
+}
+
+.title h1{
+
+color:#0f4c81;
+font-size:34px;
+
+}
+
+.title p{
+
+color:#666;
+margin-top:8px;
+
+}
+
+.score{
+
+width:170px;
+height:170px;
+border-radius:50%;
+background:linear-gradient(135deg,#1dbf73,#0f4c81);
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+color:white;
+
+}
+
+.score h1{
+
+font-size:48px;
+
+}
+
+.score p{
+
+font-size:16px;
+
+}
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:30px;
+
+}
+
+.card{
+
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.card i{
+
+font-size:34px;
+color:#1dbf73;
+margin-bottom:15px;
+
+}
+
+.card h3{
+
+color:#0f4c81;
+margin-bottom:12px;
+
+}
+
+.card p{
+
+font-size:15px;
+color:#666;
+line-height:28px;
+
+}
+
+.section-title{
+
+font-size:30px;
+color:#0f4c81;
+margin-bottom:20px;
+
+}
+
+.chart-grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+
+}
+
+.chart-card{
+
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.chart-card h2{
+
+margin-bottom:10px;
+color:#0f4c81;
+
+}
+
+.chart-card p{
+
+color:#777;
+margin-bottom:20px;
+line-height:28px;
+
+}
+
+canvas{
+
+height:320px !important;
+
+}
+
+@media(max-width:1000px){
+
+.header{
+
+flex-direction:column;
+text-align:center;
+gap:20px;
+
+}
+
+.cards{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+.chart-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:650px){
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="title">
+
+<h1>
+<i class="fa-solid fa-child-reaching"></i>
+Child Health Dashboard
+</h1>
+
+<p>
+
+Welcome,
+<b>{{data.name}}</b>
+
+Here's a personalized overview of your child's wellness based on the assessment.
+
+</p>
+
+</div>
+
+<div class="score">
+
+<h1>{{data.score}}</h1>
+
+<p>Wellness Score</p>
+
+</div>
+
+</div>
+
+<!-- INFO CARDS -->
+
+<div class="cards">
+
+<div class="card">
+
+<i class="fa-solid fa-user"></i>
+
+<h3>Child Details</h3>
+
+<p><b>Name :</b> {{data.name}}</p>
+
+<p><b>Email :</b> {{data.email}}</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-ruler"></i>
+
+<h3>Physical Growth</h3>
+
+<p><b>Height :</b> {{data.height}} cm</p>
+
+<p><b>Weight :</b> {{data.weight}} kg</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+<h3>Assessment</h3>
+
+<p><b>Status :</b> {{data.result}}</p>
+
+<p><b>Category :</b> Child</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+<h3>Health Note</h3>
+
+<p>
+
+This dashboard summarizes the child's current lifestyle habits and wellness indicators.
+
+</p>
+
+</div>
+
+</div>
+
+<h2 class="section-title">
+
+Health Analytics
+
+</h2>
+
+<div class="chart-grid">
+
+<!-- BAR CHART -->
+
+<div class="chart-card">
+
+<h2>Healthy Habits Comparison</h2>
+
+<p>
+
+This chart compares important daily habits. Taller bars indicate healthier routines.
+
+</p>
+
+<canvas id="barChart"></canvas>
+
+</div>
+
+<!-- DOUGHNUT CHART -->
+
+<div class="chart-card">
+
+<h2>Overall Wellness Distribution</h2>
+
+<p>
+
+This chart summarizes the child's healthy lifestyle score versus areas that can be improved.
+
+</p>
+
+<canvas id="doughnutChart"></canvas>
+
+</div>
+<!-- ================= PIE CHART ================= -->
+
+<div class="chart-card">
+
+<h2>Healthy Routine Breakdown</h2>
+
+<p>
+
+This chart shows how different lifestyle factors contribute to the child's overall wellness.
+
+</p>
+
+<canvas id="pieChart"></canvas>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* ===============================
+BAR CHART
+=============================== */
+
+new Chart(document.getElementById("barChart"),{
+
+type:"bar",
+
+data:{
+
+labels:[
+"Nutrition",
+"Water",
+"Exercise",
+"Sleep"
+],
+
+datasets:[{
+
+label:"Health Score",
+
+data:[
+
+{% if data.fruits=="yes" %}100{% else %}40{% endif %},
+
+{% if data.water=="More than 2 Litres" %}
+100
+{% elif data.water=="1-2 Litres" %}
+75
+{% else %}
+40
+{% endif %},
+
+{% if data.exercise=="More than 1 Hour" %}
+100
+{% elif data.exercise=="30-60 Minutes" %}
+70
+{% else %}
+35
+{% endif %},
+
+{% if data.sleep=="More than 9 Hours" %}
+100
+{% elif data.sleep=="7-9 Hours" %}
+85
+{% else %}
+45
+{% endif %}
+
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+display:false
+}
+
+},
+
+scales:{
+
+y:{
+
+beginAtZero:true,
+
+max:100
+
+}
+
+}
+
+}
+
+});
+
+
+
+/* ===============================
+DOUGHNUT CHART
+=============================== */
+
+new Chart(document.getElementById("doughnutChart"),{
+
+type:"doughnut",
+
+data:{
+
+labels:[
+"Healthy Lifestyle",
+"Needs Improvement"
+],
+
+datasets:[{
+
+data:[
+{{data.score}},
+{{100-data.score}}
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true
+
+}
+
+});
+
+
+
+
+
+
+
+/* ===============================
+PIE CHART
+=============================== */
+
+new Chart(document.getElementById("pieChart"),{
+
+type:"pie",
+
+data:{
+
+labels:[
+
+"Nutrition",
+
+"Hydration",
+
+"Exercise",
+
+"Sleep"
+
+],
+
+datasets:[{
+
+data:[
+
+25,
+
+25,
+
+25,
+
+25
+
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true
+
+}
+
+});
+
+</script><!-- ================================
+PERSONALIZED HEALTH REPORT
+================================ -->
+
+<div style="margin-top:40px;"></div>
+
+<h2 class="section-title">
+
+<i class="fa-solid fa-notes-medical"></i>
+
+Personalized Health Report
+
+</h2>
+
+
+<div class="cards">
+
+
+<!-- Assessment Summary -->
+
+<div class="card">
+
+<i class="fa-solid fa-file-medical"></i>
+
+<h3>Assessment Summary</h3>
+
+<p>
+
+Overall Wellness :
+<b>{{data.result}}</b>
+
+</p>
+
+<p>
+
+Wellness Score :
+<b>{{data.score}} / 100</b>
+
+</p>
+
+<p>
+
+Based on the responses provided, this assessment highlights the child's current lifestyle habits and identifies areas that may benefit from healthier daily routines.
+
+</p>
+
+</div>
+
+
+
+<!-- AI Recommendations -->
+
+<div class="card">
+
+<i class="fa-solid fa-robot"></i>
+
+<h3>AI Recommendations</h3>
+
+<ul style="padding-left:18px;line-height:32px;color:#555;">
+
+{% if data.fruits=="no" %}
+<li>🍎 Include fresh fruits every day.</li>
+{% else %}
+<li>✅ Continue eating fruits regularly.</li>
+{% endif %}
+
+{% if data.vegetables=="no" %}
+<li>🥕 Increase vegetable intake.</li>
+{% else %}
+<li>✅ Great vegetable intake.</li>
+{% endif %}
+
+{% if data.water=="Less than 1 Litre" %}
+<li>💧 Drink more water daily.</li>
+{% elif data.water=="1-2 Litres" %}
+<li>💧 Try increasing water intake slightly.</li>
+{% else %}
+<li>✅ Excellent hydration.</li>
+{% endif %}
+
+{% if data.exercise=="Less than 30 Minutes" %}
+<li>🏃 Encourage at least one hour of outdoor play.</li>
+{% elif data.exercise=="30-60 Minutes" %}
+<li>🏃 Good activity level. Try reaching one hour.</li>
+{% else %}
+<li>✅ Excellent physical activity.</li>
+{% endif %}
+
+{% if data.screen=="More than 3 Hours" %}
+<li>📱 Reduce screen time.</li>
+{% elif data.screen=="1-3 Hours" %}
+<li>📱 Maintain balanced screen usage.</li>
+{% else %}
+<li>✅ Healthy screen habits.</li>
+{% endif %}
+
+{% if data.sleep=="Less than 7 Hours" %}
+<li>😴 Increase sleeping hours.</li>
+{% elif data.sleep=="7-9 Hours" %}
+<li>😴 Good sleep routine.</li>
+{% else %}
+<li>✅ Excellent sleeping habit.</li>
+{% endif %}
+
+</ul>
+
+</div>
+
+
+
+<!-- Positive Habits -->
+
+<div class="card">
+
+<i class="fa-solid fa-star"></i>
+
+<h3>Healthy Habits</h3>
+
+<p>
+
+✔ Balanced Nutrition
+
+</p>
+
+<p>
+
+✔ Regular Physical Activity
+
+</p>
+
+<p>
+
+✔ Healthy Sleeping Routine
+
+</p>
+
+<p>
+
+✔ Proper Hydration
+
+</p>
+
+<p>
+
+✔ Reduced Screen Time
+
+</p>
+
+</div>
+
+
+
+<!-- Future Goal -->
+
+<div class="card">
+
+<i class="fa-solid fa-bullseye"></i>
+
+<h3>Next Wellness Goal</h3>
+
+<p>
+
+Maintain a balanced lifestyle consistently.
+
+Small improvements every day contribute to long-term health and wellbeing.
+
+</p>
+
+<p>
+
+Reassess after a few weeks to monitor progress.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- BUTTONS -->
+
+<div style="text-align:center;margin-top:50px;">
+
+<a href="/child">
+
+<button style="padding:15px 35px;border:none;border-radius:12px;background:#0f4c81;color:white;font-size:17px;cursor:pointer;margin-right:15px;">
+
+<i class="fa-solid fa-rotate"></i>
+
+Take Assessment Again
+
+</button>
+
+</a>
+
+
+<a href="/">
+
+<button style="padding:15px 35px;border:none;border-radius:12px;background:#1dbf73;color:white;font-size:17px;cursor:pointer;">
+
+<i class="fa-solid fa-house"></i>
+
+Back to Home
+
+</button>
+
+</a>
+
+</div>
+
+
+
+</div>
+
+</body>
+
+</html>

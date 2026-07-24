@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Select Age Category</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:#f4f8ff;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+
+}
+
+.container{
+
+width:900px;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+text-align:center;
+
+}
+
+h1{
+
+color:#0f4c81;
+margin-bottom:10px;
+
+}
+
+p{
+
+color:#666;
+margin-bottom:40px;
+
+}
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+
+}
+
+.card{
+
+padding:35px;
+border-radius:15px;
+background:#f8fbff;
+transition:.3s;
+cursor:pointer;
+text-decoration:none;
+color:#333;
+border:2px solid transparent;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+border-color:#1dbf73;
+box-shadow:0 10px 20px rgba(0,0,0,.1);
+
+}
+
+.card i{
+
+font-size:55px;
+color:#1dbf73;
+margin-bottom:15px;
+
+}
+
+.card h2{
+
+margin-bottom:10px;
+
+}
+
+.card p{
+
+margin:0;
+font-size:14px;
+line-height:24px;
+
+}
+
+@media(max-width:700px){
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+.container{
+
+width:90%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Select Your Age Category</h1>
+
+<p>Choose your age group to receive a personalized health assessment.</p>
+
+<div class="cards">
+
+<a href="/child" class="card">
+
+<i class="fa-solid fa-child"></i>
+
+<h2>Child</h2>
+
+<p>0 - 12 Years</p>
+
+</a>
+
+<a href="/teen" class="card">
+
+<i class="fa-solid fa-user-graduate"></i>
+
+<h2>Teen</h2>
+
+<p>13 - 19 Years</p>
+
+</a>
+
+<a href="/adult" class="card">
+
+<i class="fa-solid fa-user"></i>
+
+<h2>Adult</h2>
+
+<p>20 - 59 Years</p>
+
+</a>
+
+<a href="/senior" class="card">
+
+<i class="fa-solid fa-person-cane"></i>
+
+<h2>Senior Citizen</h2>
+
+<p>60+ Years</p>
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

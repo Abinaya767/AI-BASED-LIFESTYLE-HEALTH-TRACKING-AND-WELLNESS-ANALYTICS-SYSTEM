@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adult Health Summary</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+<style>
+
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+
+}
+
+
+body{
+
+background:#eef5ff;
+padding:40px;
+
+}
+
+
+.container{
+
+max-width:1200px;
+margin:auto;
+
+}
+
+
+
+.header{
+
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+
+margin-bottom:30px;
+
+
+}
+
+
+
+.header h1{
+
+color:#0f4c81;
+
+font-size:36px;
+
+
+}
+
+
+.header p{
+
+
+color:#666;
+
+margin-top:10px;
+
+line-height:30px;
+
+
+}
+
+
+
+
+.score-box{
+
+
+width:180px;
+
+height:180px;
+
+border-radius:50%;
+
+
+background:linear-gradient(135deg,#ff9800,#1565c0);
+
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+
+color:white;
+
+
+}
+
+
+
+.score-box h1{
+
+font-size:48px;
+
+
+}
+
+
+
+.score-box p{
+
+font-size:16px;
+
+}
+
+
+
+
+
+.cards{
+
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+
+margin-bottom:35px;
+
+
+}
+
+
+
+.card{
+
+
+background:white;
+
+padding:25px;
+
+border-radius:18px;
+
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.card i{
+
+
+font-size:35px;
+
+color:#ff9800;
+
+margin-bottom:15px;
+
+
+}
+
+
+
+.card h3{
+
+
+color:#0f4c81;
+
+margin-bottom:15px;
+
+
+}
+
+
+
+.card p{
+
+
+color:#555;
+
+line-height:30px;
+
+
+}
+
+
+
+.report{
+
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+
+margin-bottom:30px;
+
+
+}
+
+
+
+.report h2{
+
+
+color:#0f4c81;
+
+margin-bottom:15px;
+
+
+}
+
+
+
+.report p{
+
+
+color:#555;
+
+line-height:32px;
+
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+
+.header{
+
+flex-direction:column;
+
+text-align:center;
+
+gap:25px;
+
+}
+
+
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+
+<!-- HEADER -->
+
+
+<div class="header">
+
+
+<div>
+
+
+<h1>
+
+<i class="fa-solid fa-user-tie"></i>
+
+Adult Health Summary
+
+</h1>
+
+
+
+<p>
+
+
+Welcome <b>{{data.name}}</b>
+
+<br>
+
+
+Your lifestyle assessment has been completed.
+
+This report provides insights about your current health habits and wellness patterns.
+
+
+</p>
+
+
+</div>
+
+
+
+<div class="score-box">
+
+
+<h1>
+
+{{data.score}}
+
+</h1>
+
+
+<p>
+
+Wellness Score
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- INFORMATION CARDS -->
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-user"></i>
+
+
+<h3>
+
+Personal Information
+
+</h3>
+
+
+<p>
+
+
+<b>Name:</b> {{data.name}}
+
+<br>
+
+
+<b>Email:</b> {{data.email}}
+
+
+<br>
+
+
+<b>Age:</b> {{data.age}}
+
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+
+<h3>
+
+Wellness Result
+
+</h3>
+
+
+
+<p>
+
+
+<b>Status:</b>
+
+{{data.result}}
+
+
+</p>
+
+
+
+<p>
+
+Your lifestyle responses were analyzed to understand your wellness level.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+<h3>
+
+Lifestyle Analysis
+
+</h3>
+
+
+<p>
+
+
+Your assessment includes physical activity, nutrition, hydration, sleep and lifestyle choices.
+
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- ASSESSMENT OVERVIEW -->
+
+
+<div class="report">
+
+
+<h2>
+
+<i class="fa-solid fa-file-medical"></i>
+
+Assessment Overview
+
+</h2>
+
+
+
+<p>
+
+This wellness assessment provides an overview of your daily habits.
+
+It helps identify positive lifestyle choices and areas where small improvements can support better health.
+
+
+</p>
+
+
+</div><!-- =====================================
+ADULT HEALTH INSIGHTS
+===================================== -->
+
+
+<div class="cards">
+
+
+<!-- STRENGTHS -->
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-circle-check"></i>
+
+
+<h3>
+
+Your Strengths
+
+</h3>
+
+
+<p>
+
+Your healthy lifestyle habits that support your overall wellness.
+
+</p>
+
+
+<ul style="margin-top:15px;padding-left:20px;line-height:32px;color:#555;">
+
+
+{% if data.exercise=="Daily" %}
+
+<li>🏃 Regular physical activity</li>
+
+{% endif %}
+
+
+
+{% if data.water=="More than 2 Litres" %}
+
+<li>💧 Good hydration habit</li>
+
+{% endif %}
+
+
+
+{% if data.sleep=="7-9 Hours" %}
+
+<li>😴 Healthy sleep routine</li>
+
+{% endif %}
+
+
+
+{% if data.smoking=="no" %}
+
+<li>🚭 Smoke-free lifestyle choice</li>
+
+{% endif %}
+
+
+
+{% if data.alcohol=="no" %}
+
+<li>🥗 Healthy lifestyle decisions</li>
+
+{% endif %}
+
+
+
+<li>⭐ Continuous wellness awareness</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+<!-- IMPROVEMENT AREAS -->
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-bullseye"></i>
+
+
+<h3>
+
+Focus Areas
+
+</h3>
+
+
+<p>
+
+Small changes that can improve your daily wellness.
+
+</p>
+
+
+
+<ul style="margin-top:15px;padding-left:20px;line-height:32px;color:#555;">
+
+
+
+{% if data.exercise=="Never" %}
+
+<li>🏃 Add regular physical activity</li>
+
+{% endif %}
+
+
+
+{% if data.water=="Less than 1 Litre" %}
+
+<li>💧 Increase daily water intake</li>
+
+{% endif %}
+
+
+
+{% if data.sleep=="Less than 6 Hours" %}
+
+<li>😴 Improve sleep duration</li>
+
+{% endif %}
+
+
+
+{% if data.stress=="High" %}
+
+<li>🧘 Practice stress management</li>
+
+{% endif %}
+
+
+
+{% if data.smoking=="yes" %}
+
+<li>🚭 Consider reducing smoking habits</li>
+
+{% endif %}
+
+
+
+{% if data.alcohol=="yes" %}
+
+<li>🍷 Maintain healthier alcohol habits</li>
+
+{% endif %}
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+<!-- WELLNESS NOTE -->
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-lightbulb"></i>
+
+
+<h3>
+
+Wellness Insight
+
+</h3>
+
+
+
+<p>
+
+
+Your health is influenced by daily choices.
+
+Maintaining balanced food habits, regular activity, proper sleep and stress control can support long-term wellness.
+
+
+</p>
+
+
+<p style="margin-top:15px;">
+
+
+Consistency is more important than perfection.
+
+Small improvements every day create meaningful results.
+
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- =====================================
+PERSONALIZED RECOMMENDATIONS
+===================================== -->
+
+
+<div class="report">
+
+
+<h2>
+
+
+<i class="fa-solid fa-robot"></i>
+
+
+Personalized Wellness Recommendations
+
+
+</h2>
+
+
+
+<div style="line-height:35px;color:#555;margin-top:20px;">
+
+
+
+{% if data.exercise=="Never" %}
+
+<p>
+
+🏃 Include walking, yoga or any physical activity in your routine.
+
+</p>
+
+{% else %}
+
+<p>
+
+🏃 Continue maintaining your active lifestyle.
+
+</p>
+
+{% endif %}
+
+
+
+
+{% if data.water=="Less than 1 Litre" %}
+
+<p>
+
+💧 Try increasing your water intake throughout the day.
+
+</p>
+
+{% else %}
+
+<p>
+
+💧 Maintain your current hydration habits.
+
+</p>
+
+{% endif %}
+
+
+
+
+{% if data.sleep=="Less than 6 Hours" %}
+
+<p>
+
+😴 Create a fixed sleep schedule and aim for better rest.
+
+</p>
+
+{% else %}
+
+<p>
+
+😴 Continue following a healthy sleep pattern.
+
+</p>
+
+{% endif %}
+
+
+
+
+{% if data.stress=="High" %}
+
+<p>
+
+🧘 Take breaks, practice relaxation techniques and manage stress levels.
+
+</p>
+
+{% endif %}
+
+
+
+
+{% if data.smoking=="yes" %}
+
+<p>
+
+🚭 Reducing smoking can support better long-term wellness.
+
+</p>
+
+{% endif %}
+
+
+
+
+{% if data.alcohol=="yes" %}
+
+<p>
+
+🍷 Consider healthier choices regarding alcohol consumption.
+
+</p>
+
+{% endif %}
+
+
+
+
+<p>
+
+🥗 Maintain balanced meals with enough nutrients.
+
+</p>
+
+
+
+</div>
+
+
+</div><!-- =====================================
+ADULT WELLNESS TIPS
+===================================== -->
+
+
+<div class="report">
+
+
+<h2>
+
+<i class="fa-solid fa-heart"></i>
+
+Healthy Lifestyle Tips
+
+</h2>
+
+
+
+<div class="cards" style="margin-top:25px;">
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-person-running"></i>
+
+
+<h3>
+
+Stay Active
+
+</h3>
+
+
+<p>
+
+Regular walking, exercise, stretching or physical activities help maintain energy levels and overall fitness.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-utensils"></i>
+
+
+<h3>
+
+Balanced Nutrition
+
+</h3>
+
+
+<p>
+
+Choose nutritious meals with vegetables, fruits, proteins and healthy food choices.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<i class="fa-solid fa-brain"></i>
+
+
+<h3>
+
+Manage Stress
+
+</h3>
+
+
+<p>
+
+Take regular breaks, practice relaxation techniques and maintain a healthy work-life balance.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- =====================================
+NEXT WELLNESS GOAL
+===================================== -->
+
+
+<div class="report">
+
+
+<h2>
+
+<i class="fa-solid fa-bullseye"></i>
+
+Your Next Wellness Goal
+
+</h2>
+
+
+
+<p>
+
+Focus on maintaining consistency in your healthy habits.
+
+Small improvements in exercise, sleep, hydration and stress management can create a positive impact on your overall wellness.
+
+</p>
+
+
+
+<p style="margin-top:15px;">
+
+
+Your health journey is continuous. Regular self-awareness helps you make better lifestyle choices.
+
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<!-- =====================================
+BUTTONS
+===================================== -->
+
+
+<div style="text-align:center;margin:40px 0;">
+
+
+
+<a href="/adultdashboard">
+
+
+<button style="
+padding:15px 35px;
+border:none;
+border-radius:12px;
+background:#1565c0;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+">
+
+
+<i class="fa-solid fa-chart-column"></i>
+
+View Dashboard
+
+
+</button>
+
+
+</a>
+
+
+
+
+
+<a href="/adult">
+
+
+<button style="
+padding:15px 35px;
+border:none;
+border-radius:12px;
+background:#ff9800;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+">
+
+
+<i class="fa-solid fa-rotate"></i>
+
+Take Assessment Again
+
+
+</button>
+
+
+</a>
+
+
+
+
+
+<a href="/">
+
+
+<button style="
+padding:15px 35px;
+border:none;
+border-radius:12px;
+background:#424242;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+">
+
+
+<i class="fa-solid fa-house"></i>
+
+Back To Home
+
+
+</button>
+
+
+</a>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</body>
+
+
+</html>
